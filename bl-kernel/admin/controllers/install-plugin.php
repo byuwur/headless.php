@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -23,17 +23,17 @@ checkRole(array('admin'));
 // ============================================================================
 $pluginClassName = $layout['parameters'];
 if (!activatePlugin($pluginClassName)) {
-	Log::set('Fail when try to activate the plugin.', LOG_TYPE_ERROR);
+    Log::set('Fail when try to activate the plugin.', LOG_TYPE_ERROR);
 }
 
 if (isset($plugins['all'][$pluginClassName])) {
-	$plugin = $plugins['all'][$pluginClassName];
+    $plugin = $plugins['all'][$pluginClassName];
 } else {
-	Redirect::page('plugins');
+    Redirect::page('plugins');
 }
 
 if (method_exists($plugin, 'form')) {
-	Redirect::page('configure-plugin/'.$pluginClassName);
+    Redirect::page('configure-plugin/' . $pluginClassName);
 }
 
-Redirect::page('plugins#'.$pluginClassName);
+Redirect::page('plugins#' . $pluginClassName);

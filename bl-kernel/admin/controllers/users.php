@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -18,9 +18,8 @@ checkRole(array('admin'));
 // POST Method
 // ============================================================================
 
-if( $_SERVER['REQUEST_METHOD'] == 'POST' )
-{
-	$site->set($_POST);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $site->set($_POST);
 }
 
 // ============================================================================
@@ -28,4 +27,4 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' )
 // ============================================================================
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('Users');
+$layout['title'] .= ' - ' . $L->g('Users');

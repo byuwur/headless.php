@@ -1,12 +1,12 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 echo '<h1 class="text-center mb-3 mt-3 font-weight-normal" style="color: #555;">' . $site->title() . '</h1>';
 
 echo Bootstrap::formOpen(array());
 
 echo Bootstrap::formInputHidden(array(
-	'name' => 'tokenCSRF',
-	'value' => $security->getTokenCSRF()
+    'name' => 'tokenCSRF',
+    'value' => $security->getTokenCSRF()
 ));
 
 echo '
@@ -34,4 +34,4 @@ echo '
 
 echo '</form>';
 
-echo '<p class="mt-3 text-right">' . $L->g('Powered by Bludit') . ((defined('BLUDIT_PRO')) ? ' PRO' : '') . '</p>';
+echo '<p class="mt-3 text-right">' . $L->g('Powered by Headless.PHP') . ((defined('HEADLESS_PHP_PRO')) ? ' PRO' : '') . '</p>';

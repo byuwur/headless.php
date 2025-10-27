@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 /*
 	Environment variables
@@ -38,8 +38,8 @@ define('SALT_LENGTH', 8);
 define('PAGE_BREAK', '<!-- pagebreak -->');
 
 // Remember me
-define('REMEMBER_COOKIE_USERNAME', 'BLUDITREMEMBERUSERNAME');
-define('REMEMBER_COOKIE_TOKEN', 'BLUDITREMEMBERTOKEN');
+define('REMEMBER_COOKIE_USERNAME', 'HEADLESS_PHPREMEMBERUSERNAME');
+define('REMEMBER_COOKIE_TOKEN', 'HEADLESS_PHPREMEMBERTOKEN');
 define('REMEMBER_COOKIE_EXPIRE_IN_DAYS', 30);
 
 // Filename
@@ -104,7 +104,7 @@ define('MEDIA_MANAGER_SORT_BY_DATE', true);
 // Constant arrays using define are not allowed in PHP 5.6 or earlier
 
 // Type of pages included in the tag database
-$GLOBALS['DB_TAGS_TYPES'] = array('published','static','sticky');
+$GLOBALS['DB_TAGS_TYPES'] = array('published', 'static', 'sticky');
 
 // Allowed image extensions
 $GLOBALS['ALLOWED_IMG_EXTENSION'] = array('gif', 'png', 'jpg', 'jpeg', 'svg', 'webp');

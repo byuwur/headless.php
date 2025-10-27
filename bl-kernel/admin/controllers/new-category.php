@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -19,9 +19,9 @@ checkRole(array('admin'));
 // ============================================================================
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	if (createCategory($_POST)) {
-		Redirect::page('categories');
-	}
+    if (createCategory($_POST)) {
+        Redirect::page('categories');
+    }
 }
 
 // ============================================================================
@@ -29,4 +29,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // ============================================================================
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('New category');
+$layout['title'] .= ' - ' . $L->g('New category');

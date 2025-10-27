@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 header('Content-Type: application/json');
 
 /*
@@ -16,28 +16,26 @@ $filename = isset($_POST['filename']) ? $_POST['filename'] : false;
 $uuid = empty($_POST['uuid']) ? false : $_POST['uuid'];
 // ----------------------------------------------------------------------------
 
-if ($filename===false) {
-	ajaxResponse(1, 'The filename is empty.');
+if ($filename === false) {
+    ajaxResponse(1, 'The filename is empty.');
 }
 
 if ($uuid && IMAGE_RESTRICT) {
-	$imagePath = PATH_UPLOADS_PAGES.$uuid.DS;
-	$thumbnailPath = PATH_UPLOADS_PAGES.$uuid.DS.'thumbnails'.DS;
+    $imagePath = PATH_UPLOADS_PAGES . $uuid . DS;
+    $thumbnailPath = PATH_UPLOADS_PAGES . $uuid . DS . 'thumbnails' . DS;
 } else {
-	$imagePath = PATH_UPLOADS;
-	$thumbnailPath = PATH_UPLOADS_THUMBNAILS;
+    $imagePath = PATH_UPLOADS;
+    $thumbnailPath = PATH_UPLOADS_THUMBNAILS;
 }
 
 // Delete image
-if (Sanitize::pathFile($imagePath.$filename)) {
-	Filesystem::rmfile($imagePath.$filename);
+if (Sanitize::pathFile($imagePath . $filename)) {
+    Filesystem::rmfile($imagePath . $filename);
 }
 
 // Delete thumbnail
-if (Sanitize::pathFile($thumbnailPath.$filename)) {
-	Filesystem::rmfile($thumbnailPath.$filename);
+if (Sanitize::pathFile($thumbnailPath . $filename)) {
+    Filesystem::rmfile($thumbnailPath . $filename);
 }
 
 ajaxResponse(0, 'Image deleted.');
-
-?>

@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -19,8 +19,8 @@ checkRole(array('admin'));
 // ============================================================================
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	editSettings($_POST);
-	Redirect::page('settings');
+    editSettings($_POST);
+    Redirect::page('settings');
 }
 
 // ============================================================================
@@ -28,4 +28,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // ============================================================================
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('Advanced Settings');
+$layout['title'] .= ' - ' . $L->g('Advanced Settings');

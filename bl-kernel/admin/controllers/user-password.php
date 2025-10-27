@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Functions
@@ -13,22 +13,22 @@
 // ============================================================================
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	// Prevent non-administrators to change other users
-	$username = $_POST['username'];
-	if ($login->role()!=='admin') {
-	    $username = $login->username();
-	}
+    // Prevent non-administrators to change other users
+    $username = $_POST['username'];
+    if ($login->role() !== 'admin') {
+        $username = $login->username();
+    }
 
-	if (changeUserPassword(array(
-		'username'=>$username,
-		'newPassword'=>$_POST['newPassword'],
-		'confirmPassword'=>$_POST['confirmPassword']
-	))) {
-		if ($login->role()==='admin') {
-			Redirect::page('users');
-		}
-		Redirect::page('edit-user/'.$login->username());
-	}
+    if (changeUserPassword(array(
+        'username' => $username,
+        'newPassword' => $_POST['newPassword'],
+        'confirmPassword' => $_POST['confirmPassword']
+    ))) {
+        if ($login->role() === 'admin') {
+            Redirect::page('users');
+        }
+        Redirect::page('edit-user/' . $login->username());
+    }
 }
 
 // ============================================================================
@@ -36,16 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // ============================================================================
 
 // Prevent non-administrators to change other users
-if ($login->role()!=='admin') {
-	$layout['parameters'] = $login->username();
+if ($login->role() !== 'admin') {
+    $layout['parameters'] = $login->username();
 }
 
 try {
-	$username = $layout['parameters'];
-	$user = new User($username);
+    $username = $layout['parameters'];
+    $user = new User($username);
 } catch (Exception $e) {
-	Redirect::page('users');
+    Redirect::page('users');
 }
 
 // Title of the page
-$layout['title'] = $L->g('Change password').' - '.$layout['title'];
+$layout['title'] = $L->g('Change password') . ' - ' . $layout['title'];

@@ -1,23 +1,23 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // Current page number
 $currentPage = $url->pageNumber();
 Paginator::set('currentPage', $currentPage);
 
-if ($url->whereAmI()=='admin') {
-	$itemsPerPage = ITEMS_PER_PAGE_ADMIN;
-	$numberOfItems = $pages->count(true);
-} elseif ($url->whereAmI()=='tag') {
-	$itemsPerPage = $site->itemsPerPage();
-	$tagKey = $url->slug();
-	$numberOfItems = $tags->numberOfPages($tagKey);
-} elseif ($url->whereAmI()=='category') {
-	$itemsPerPage = $site->itemsPerPage();
-	$categoryKey = $url->slug();
-	$numberOfItems = $categories->numberOfPages($categoryKey);
+if ($url->whereAmI() == 'admin') {
+    $itemsPerPage = ITEMS_PER_PAGE_ADMIN;
+    $numberOfItems = $pages->count(true);
+} elseif ($url->whereAmI() == 'tag') {
+    $itemsPerPage = $site->itemsPerPage();
+    $tagKey = $url->slug();
+    $numberOfItems = $tags->numberOfPages($tagKey);
+} elseif ($url->whereAmI() == 'category') {
+    $itemsPerPage = $site->itemsPerPage();
+    $categoryKey = $url->slug();
+    $numberOfItems = $categories->numberOfPages($categoryKey);
 } else {
-	$itemsPerPage = $site->itemsPerPage();
-	$numberOfItems = $pages->count(true);
+    $itemsPerPage = $site->itemsPerPage();
+    $numberOfItems = $pages->count(true);
 }
 
 // Execute hook from plugins
@@ -46,9 +46,9 @@ $showNextPrev = $showNext && $showPrev;
 Paginator::set('showNextPrev', $showNextPrev);
 
 // Integer with the next page
-$nextPage = max(0, $currentPage+1);
+$nextPage = max(0, $currentPage + 1);
 Paginator::set('nextPage', $nextPage);
 
 // Integer with the previous page
-$prevPage = min($numberOfPages, $currentPage-1);
+$prevPage = min($numberOfPages, $currentPage - 1);
 Paginator::set('prevPage', $prevPage);

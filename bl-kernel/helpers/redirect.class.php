@@ -1,29 +1,30 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
-class Redirect {
+class Redirect
+{
 
-	public static function url($url, $httpCode=301)
-	{
-		if (!headers_sent()) {
-			header("Location:".$url, TRUE, $httpCode);
-			exit(0);
-		}
+    public static function url($url, $httpCode = 301)
+    {
+        if (!headers_sent()) {
+            header("Location:" . $url, TRUE, $httpCode);
+            exit(0);
+        }
 
-		exit('<meta http-equiv="refresh" content="0; url='.$url.'"/>');
-	}
+        exit('<meta http-equiv="refresh" content="0; url=' . $url . '"/>');
+    }
 
-	public static function page($page)
-	{
-		self::url(HTML_PATH_ADMIN_ROOT.$page);
-	}
+    public static function page($page)
+    {
+        self::url(HTML_PATH_ADMIN_ROOT . $page);
+    }
 
-	public static function home()
-	{
-		self::url(HTML_PATH_ROOT);
-	}
+    public static function home()
+    {
+        self::url(HTML_PATH_ROOT);
+    }
 
-	public static function admin()
-	{
-		self::url(HTML_PATH_ADMIN_ROOT);
-	}
+    public static function admin()
+    {
+        self::url(HTML_PATH_ADMIN_ROOT);
+    }
 }

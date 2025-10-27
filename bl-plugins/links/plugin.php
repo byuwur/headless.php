@@ -86,12 +86,12 @@ class pluginLinks extends Plugin
 
 		$html .= '<div>';
 		$html .= '<label>' . $L->get('Name') . '</label>';
-		$html .= '<input name="linkName" type="text" dir="auto" class="form-control" value="" placeholder="Bludit">';
+		$html .= '<input name="linkName" type="text" dir="auto" class="form-control" value="" placeholder="Headless.PHP">';
 		$html .= '</div>';
 
 		$html .= '<div>';
 		$html .= '<label>' . $L->get('Url') . '</label>';
-		$html .= '<input name="linkURL" type="text" dir="auto" class="form-control" value="" placeholder="https://www.bludit.com/">';
+		$html .= '<input name="linkURL" type="text" dir="auto" class="form-control" value="" placeholder="https://byuwur.co/">';
 		$html .= '</div>';
 
 		$html .= '<div>';

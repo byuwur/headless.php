@@ -1,42 +1,42 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
-class Email {
+class Email
+{
 
-	// Returns TRUE if the mail was successfully accepted for delivery, FALSE otherwise.
-	public static function send($args)
-	{
-		// Current time in unixtimestamp
-		$now = time();
+    // Returns TRUE if the mail was successfully accepted for delivery, FALSE otherwise.
+    public static function send($args)
+    {
+        // Current time in unixtimestamp
+        $now = time();
 
-		// Domain
-		$domainParse = parse_url(DOMAIN);
+        // Domain
+        $domainParse = parse_url(DOMAIN);
 
-		$headers   = array();
-		$headers[] = 'MIME-Version: 1.0';
-		$headers[] = 'Content-type: text/html; charset=utf-8';
-		$headers[] = 'Content-Transfer-Encoding: 8bit';
+        $headers   = array();
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=utf-8';
+        $headers[] = 'Content-Transfer-Encoding: 8bit';
 
-		$headers[] = 'From: =?UTF-8?B?'.base64_encode($args['fromName']).'?= <'.$args['from'].'>';
-		$headers[] = 'Reply-To: '.$args['from'];
-		$headers[] = 'Return-Path: '.$args['from'];
-		$headers[] = 'message-id: <'.$now.'webmaster@'.$domainParse['host'].'>';
-		$headers[] = 'X-Mailer: PHP/'.phpversion();
+        $headers[] = 'From: =?UTF-8?B?' . base64_encode($args['fromName']) . '?= <' . $args['from'] . '>';
+        $headers[] = 'Reply-To: ' . $args['from'];
+        $headers[] = 'Return-Path: ' . $args['from'];
+        $headers[] = 'message-id: <' . $now . 'webmaster@' . $domainParse['host'] . '>';
+        $headers[] = 'X-Mailer: PHP/' . phpversion();
 
-		$subject = '=?UTF-8?B?'.base64_encode($args['subject']).'?=';
+        $subject = '=?UTF-8?B?' . base64_encode($args['subject']) . '?=';
 
-		$message = '<html>
+        $message = '<html>
 		<head>
 			<meta charset="UTF-8">
-			<title>BLUDIT</title>
+			<title>HEADLESS_PHP</title>
 		</head>
 		<body>
 		<div>
-			'.$args['message'].'
+			' . $args['message'] . '
 		</div>
 		</body>
 		</html>';
 
-		return mail($args['to'], $subject, $message, implode(PHP_EOL, $headers));
-	}
-
+        return mail($args['to'], $subject, $message, implode(PHP_EOL, $headers));
+    }
 }

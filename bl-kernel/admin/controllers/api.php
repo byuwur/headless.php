@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -23,18 +23,16 @@ checkRole(array('admin'));
 // ============================================================================
 
 activatePlugin('pluginAPI');
-$apiURL = DOMAIN_BASE.'api/';
+$apiURL = DOMAIN_BASE . 'api/';
 $pluginAPI = getPlugin('pluginAPI');
 $apiToken = $pluginAPI->getToken();
 $username = $login->username();
 $admin = new User($username);
 $authToken = $admin->tokenAuth();
 $output = array(
-	'apiURL'=>$apiURL,
-	'username'=>$username,
-	'apiToken'=>$apiToken,
-	'authToken'=>$authToken
+    'apiURL' => $apiURL,
+    'username' => $username,
+    'apiToken' => $apiToken,
+    'authToken' => $authToken
 );
 exit(json_encode($output));
-
-?>

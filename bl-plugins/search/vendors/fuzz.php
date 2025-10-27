@@ -1,10 +1,6 @@
 <?php
 
 /**
- * This script was modified to fit in Bludit
-*/
-
-/**
  * Fuzz Class
  * kevinfiol\fuzzget
  *

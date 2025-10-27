@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
-header('HTTP/1.0 '.$url->httpCode().' '.$url->httpMessage());
-header('X-Powered-By: Bludit');
+header('HTTP/1.0 ' . $url->httpCode() . ' ' . $url->httpMessage());
+header('X-Powered-By: Headless.PHP');

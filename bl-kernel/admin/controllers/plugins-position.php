@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -14,8 +14,8 @@ checkRole(array('admin'));
 // Main before POST
 // ============================================================================
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	changePluginsPosition(explode(',',$_POST['plugin-list']));
-	Redirect::page('plugins-position');
+    changePluginsPosition(explode(',', $_POST['plugin-list']));
+    Redirect::page('plugins-position');
 }
 // ============================================================================
 // POST Method
@@ -26,4 +26,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // ============================================================================
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('Plugins');
+$layout['title'] .= ' - ' . $L->g('Plugins');

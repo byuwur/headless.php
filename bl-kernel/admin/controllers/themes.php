@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -21,4 +21,4 @@ checkRole(array('admin'));
 $themes = buildThemes();
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('Themes');
+$layout['title'] .= ' - ' . $L->g('Themes');

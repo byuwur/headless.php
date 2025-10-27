@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -23,4 +23,4 @@ checkRole(array('admin'));
 // ============================================================================
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('Plugins');
+$layout['title'] .= ' - ' . $L->g('Plugins');

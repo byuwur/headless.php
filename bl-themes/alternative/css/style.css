@@ -119,7 +119,7 @@ header.welcome {
 /* Home - Page */
 section.home-page:nth-child(even) {
 	/* Alternate the background color */
-	background: #FAFAFA;
+	background: #F0F0F0;
 }
 
 .page-cover-image {
@@ -128,7 +128,7 @@ section.home-page:nth-child(even) {
 }
 
 .page-description {
-	color: #b5b5b5;
+	color: #b7b7b7;
 	font-style: italic;
 }
 

@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -11,26 +11,30 @@ checkRole(array('admin'));
 // ============================================================================
 
 // This function is used on the VIEW to show the tables
-function printTable($title, $array) {
-	echo '<h2 class="mb-2 mt-4">'.$title.'</h2>';
-	echo '<table class="table table-striped mt-3">
+function printTable($title, $array)
+{
+    echo '<h2 class="mb-2 mt-4">' . $title . '</h2>';
+    echo '<table class="table table-striped mt-3">
 		<tbody>
 	';
 
-	foreach ($array as $key=>$value) {
-		if($value===false) { $value = 'false'; }
-		elseif($value===true) { $value = 'true'; }
-		echo '<tr>';
-		echo '<td>'.$key.'</td>';
-		if (is_array($value)) {
-			echo '<td>'.json_encode($value).'</td>';
-		} else {
-			echo '<td>'.Sanitize::html($value).'</td>';
-		}
-		echo '</tr>';
-	}
+    foreach ($array as $key => $value) {
+        if ($value === false) {
+            $value = 'false';
+        } elseif ($value === true) {
+            $value = 'true';
+        }
+        echo '<tr>';
+        echo '<td>' . $key . '</td>';
+        if (is_array($value)) {
+            echo '<td>' . json_encode($value) . '</td>';
+        } else {
+            echo '<td>' . Sanitize::html($value) . '</td>';
+        }
+        echo '</tr>';
+    }
 
-	echo '
+    echo '
 		</tbody>
 		</table>
 	';
@@ -48,4 +52,4 @@ function printTable($title, $array) {
 // Main after POST
 // ============================================================================
 
-$layout['title'] .= ' - '.$L->g('Developers');
+$layout['title'] .= ' - ' . $L->g('Developers');

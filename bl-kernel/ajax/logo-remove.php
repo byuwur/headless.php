@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 header('Content-Type: application/json');
 
 /*
@@ -11,12 +11,10 @@ header('Content-Type: application/json');
 // Delete the file
 $logoFilename = $site->logo(false);
 if ($logoFilename) {
-	Filesystem::rmfile(PATH_UPLOADS.$logoFilename);
+    Filesystem::rmfile(PATH_UPLOADS . $logoFilename);
 }
 
 // Remove the logo from the database
-$site->set(array('logo'=>''));
+$site->set(array('logo' => ''));
 
 ajaxResponse(0, 'Logo removed.');
-
-?>

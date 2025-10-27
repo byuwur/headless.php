@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Variables
@@ -37,50 +37,50 @@ $staticContent = $staticPages = buildStaticPages();
 
 // Execute the scheduler
 if ($pages->scheduler()) {
-	// Execute plugins with the hook afterPageCreate
-	Theme::plugins('afterPageCreate');
+    // Execute plugins with the hook afterPageCreate
+    Theme::plugins('afterPageCreate');
 
-	reindexTags();
-        reindexCategories();
+    reindexTags();
+    reindexCategories();
 
-	// Add to syslog
-	$syslog->add(array(
-		'dictionaryKey'=>'content-published-from-scheduler',
-		'notes'=>''
-	));
+    // Add to syslog
+    $syslog->add(array(
+        'dictionaryKey' => 'content-published-from-scheduler',
+        'notes' => ''
+    ));
 }
 
 // Set home page if the user defined one
-if ($site->homepage() && $url->whereAmI()==='home') {
-	$pageKey = $site->homepage();
-	if ($pages->exists($pageKey)) {
-		$url->setSlug($pageKey);
-		$url->setWhereAmI('page');
-	}
+if ($site->homepage() && $url->whereAmI() === 'home') {
+    $pageKey = $site->homepage();
+    if ($pages->exists($pageKey)) {
+        $url->setSlug($pageKey);
+        $url->setWhereAmI('page');
+    }
 }
 
 // Build specific page
-if ($url->whereAmI()==='page') {
-	$content[0] = $page = buildThePage();
+if ($url->whereAmI() === 'page') {
+    $content[0] = $page = buildThePage();
 }
 // Build content by tag
-elseif ($url->whereAmI()==='tag') {
-	$content = buildPagesByTag();
+elseif ($url->whereAmI() === 'tag') {
+    $content = buildPagesByTag();
 }
 // Build content by category
-elseif ($url->whereAmI()==='category') {
-	$content = buildPagesByCategory();
+elseif ($url->whereAmI() === 'category') {
+    $content = buildPagesByCategory();
 }
 // Build content for the homepage
-elseif ( ($url->whereAmI()==='home') || ($url->whereAmI()==='blog') ) {
-        $content = buildPagesForHome();
+elseif (($url->whereAmI() === 'home') || ($url->whereAmI() === 'blog')) {
+    $content = buildPagesForHome();
 }
 
 if (isset($content[0])) {
-	$page = $content[0];
+    $page = $content[0];
 }
 
 // If set notFound, create the page 404
 if ($url->notFound()) {
-	$content[0] = $page = buildErrorPage();
+    $content[0] = $page = buildErrorPage();
 }

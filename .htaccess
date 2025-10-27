@@ -5,8 +5,11 @@ AddDefaultCharset UTF-8
 # Enable rewrite rules
 RewriteEngine on
 
+# Index is index
+DirectoryIndex index.php
+
 # Base directory
-RewriteBase /
+# RewriteBase /headless.php/
 
 # Deny direct access to the next directories
 RewriteRule ^bl-content/(databases|workspaces|pages|tmp)/.*$ - [R=404,L]

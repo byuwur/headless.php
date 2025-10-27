@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -18,14 +18,14 @@ $pluginClassName = $layout['parameters'];
 
 // Check if the plugin exists
 if (isset($plugins['all'][$pluginClassName])) {
-	$plugin = $plugins['all'][$pluginClassName];
+    $plugin = $plugins['all'][$pluginClassName];
 } else {
-	Redirect::page('plugins');
+    Redirect::page('plugins');
 }
 
 // Check if the plugin has the method form()
 if (!method_exists($plugin, 'form')) {
-	Redirect::page('plugins');
+    Redirect::page('plugins');
 }
 
 // ============================================================================
@@ -33,16 +33,16 @@ if (!method_exists($plugin, 'form')) {
 // ============================================================================
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	// Add to syslog
-	$syslog->add(array(
-		'dictionaryKey'=>'plugin-configured',
-		'notes'=>$plugin->name()
-	));
+    // Add to syslog
+    $syslog->add(array(
+        'dictionaryKey' => 'plugin-configured',
+        'notes' => $plugin->name()
+    ));
 
-	// Call the method post of the plugin
-	$plugin->post();
-	Alert::set( $L->g('The changes have been saved') );
-	Redirect::page('configure-plugin/'.$plugin->className());
+    // Call the method post of the plugin
+    $plugin->post();
+    Alert::set($L->g('The changes have been saved'));
+    Redirect::page('configure-plugin/' . $plugin->className());
 }
 
 // ============================================================================
@@ -50,4 +50,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // ============================================================================
 
 // Title of the page
-$layout['title'] = $L->g('Plugin').' - '.$plugin->name().' - '.$layout['title'];
+$layout['title'] = $L->g('Plugin') . ' - ' . $plugin->name() . ' - ' . $layout['title'];

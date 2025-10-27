@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 header('Content-Type: application/json');
 
 /*
@@ -23,16 +23,16 @@ $type = isset($_POST['type']) ? $_POST['type'] : 'draft';
 
 // Check UUID
 if (empty($uuid)) {
-	ajaxResponse(1, 'Save as draft fail. UUID not defined.');
+    ajaxResponse(1, 'Save as draft fail. UUID not defined.');
 }
 
 $page = array(
-	'uuid'=>$uuid,
-	'key'=>$uuid,
-	'slug'=>$uuid,
-	'title'=>$title,
-	'content'=>$content,
-	'type'=>$type
+    'uuid' => $uuid,
+    'key' => $uuid,
+    'slug' => $uuid,
+    'title' => $title,
+    'content' => $content,
+    'type' => $type
 );
 
 // Get the page key by the UUID
@@ -40,13 +40,11 @@ $pageKey = $pages->getByUUID($uuid);
 
 // if pageKey is empty means the page doesn't exist
 if (empty($pageKey)) {
-	createPage($page);
+    createPage($page);
 } else {
-	editPage($page);
+    editPage($page);
 }
 
 ajaxResponse(0, 'Save as draft successfully.', array(
-	'uuid'=>$uuid
+    'uuid' => $uuid
 ));
-
-?>

@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 header('Content-Type: application/json');
 
 /*
@@ -22,14 +22,14 @@ $uuid = empty($_POST['uuid']) ? false : $_POST['uuid'];
 // ----------------------------------------------------------------------------
 
 // Set the path to get the file list
-if ($path=='thumbnails') {
-	if ($uuid && IMAGE_RESTRICT) {
-		$path = PATH_UPLOADS_PAGES.$uuid.DS.'thumbnails'.DS;
-	} else {
-		$path = PATH_UPLOADS_THUMBNAILS;
-	}
+if ($path == 'thumbnails') {
+    if ($uuid && IMAGE_RESTRICT) {
+        $path = PATH_UPLOADS_PAGES . $uuid . DS . 'thumbnails' . DS;
+    } else {
+        $path = PATH_UPLOADS_THUMBNAILS;
+    }
 } else {
-	ajaxResponse(1, 'Invalid path.');
+    ajaxResponse(1, 'Invalid path.');
 }
 
 // Get all files from the directory $path, also split the array by numberOfItems
@@ -39,24 +39,22 @@ $listOfFilesByPage = Filesystem::listFiles($path, '*', '*', MEDIA_MANAGER_SORT_B
 // Check if the page number exists in the chunks
 if (isset($listOfFilesByPage[$pageNumber])) {
 
-	// Get only the filename from the chunk
-	$files = array();
-	foreach ($listOfFilesByPage[$pageNumber] as $file) {
-		$filename = basename($file);
-		array_push($files, $filename);
-	}
+    // Get only the filename from the chunk
+    $files = array();
+    foreach ($listOfFilesByPage[$pageNumber] as $file) {
+        $filename = basename($file);
+        array_push($files, $filename);
+    }
 
-	// Returns the number of chunks for the paginator
-	// Returns the files inside the chunk
-	ajaxResponse(0, 'List of files and number of chunks.', array(
-		'numberOfPages'=>count($listOfFilesByPage),
-		'files'=>$files
-	));
+    // Returns the number of chunks for the paginator
+    // Returns the files inside the chunk
+    ajaxResponse(0, 'List of files and number of chunks.', array(
+        'numberOfPages' => count($listOfFilesByPage),
+        'files' => $files
+    ));
 }
 
 ajaxResponse(0, 'List of files and number of chunks.', array(
-	'numberOfPages'=>0,
-	'files'=>array()
+    'numberOfPages' => 0,
+    'files' => array()
 ));
-
-?>

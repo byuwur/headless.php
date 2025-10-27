@@ -1,4 +1,4 @@
-<?php defined('BLUDIT') or die('Bludit CMS.');
+<?php defined('HEADLESS_PHP') or die('Headless.PHP');
 
 // ============================================================================
 // Check role
@@ -19,13 +19,13 @@ checkRole(array('admin'));
 // ============================================================================
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	if ($_POST['action']=='delete') {
-		deleteCategory($_POST);
-	} elseif ($_POST['action']=='edit') {
-		editCategory($_POST);
-	}
+    if ($_POST['action'] == 'delete') {
+        deleteCategory($_POST);
+    } elseif ($_POST['action'] == 'edit') {
+        editCategory($_POST);
+    }
 
-	Redirect::page('categories');
+    Redirect::page('categories');
 }
 
 // ============================================================================
@@ -34,11 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $categoryKey = $layout['parameters'];
 
 if (!$categories->exists($categoryKey)) {
-	Log::set(__METHOD__.LOG_SEP.'Error occurred when trying to get the category: '.$categoryKey);
-	Redirect::page('categories');
+    Log::set(__METHOD__ . LOG_SEP . 'Error occurred when trying to get the category: ' . $categoryKey);
+    Redirect::page('categories');
 }
 
 $categoryMap = $categories->getMap($categoryKey);
 
 // Title of the page
-$layout['title'] .= ' - '.$L->g('Edit Category').' [ '.$categoryMap['name'] . ' ] ';
+$layout['title'] .= ' - ' . $L->g('Edit Category') . ' [ ' . $categoryMap['name'] . ' ] ';
